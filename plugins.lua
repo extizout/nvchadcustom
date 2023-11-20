@@ -156,7 +156,7 @@ local plugins = {
   -- Activity Status on Discord
   {
     "andweeb/presence.nvim",
-    event = "VeryLazy",
+    event = { "VeryLazy", "BufRead" },
     config = function()
       require "custom.configs.presence"
     end,
@@ -175,7 +175,21 @@ local plugins = {
   {
     "mg979/vim-visual-multi",
     lazy = false,
-  }
+  },
+
+  {
+    "utilyre/barbecue.nvim",
+    event = "BufRead",
+    name = "barbecue",
+    version = "*",
+    dependencies = {
+      "SmiteshP/nvim-navic",
+    },
+    opts = {},
+    config = function()
+      require "custom.configs.barbecue"
+    end,
+  },
 }
 
 return plugins
