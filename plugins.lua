@@ -15,12 +15,6 @@ local plugins = {
     end,
     dependencies = {
       {
-        "jose-elias-alvarez/null-ls.nvim",
-        config = function()
-          require "custom.configs.null-ls"
-        end,
-      },
-      {
         "williamboman/mason.nvim",
         opts = overrides.mason,
       },
@@ -28,6 +22,12 @@ local plugins = {
         "williamboman/mason-lspconfig.nvim",
         config = function()
           require "custom.configs.mason-lspconfig"
+        end,
+      },
+      {
+        "jose-elias-alvarez/null-ls.nvim",
+        config = function()
+          require "custom.configs.null-ls"
         end,
       },
     },
@@ -74,7 +74,7 @@ local plugins = {
   -- Toggle Terminal
   {
     "akinsho/toggleterm.nvim",
-    lazy = false,
+    event = { "VeryLazy", "BufRead" },
     version = "*",
     config = function()
       require("custom.configs.toggleterm").setup()
@@ -84,6 +84,7 @@ local plugins = {
   -- nvim - ufo for fold
   {
     "kevinhwang91/nvim-ufo",
+    event = { "VeryLazy", "BufRead" },
     dependencies = {
       "kevinhwang91/promise-async",
       {
@@ -116,7 +117,7 @@ local plugins = {
   -- leap motion s{char}{char}
   {
     "ggandor/leap.nvim",
-    event = "BufRead",
+    event = { "VeryLazy", "BufRead" },
     config = function()
       require "custom.configs.leap"
     end,
@@ -137,7 +138,7 @@ local plugins = {
   -- Better Quick Fix
   {
     "kevinhwang91/nvim-bqf",
-    event = "BufRead",
+    event = { "VeryLazy", "BufRead" },
     lazy = true,
     config = function()
       require "custom.configs.nvim-bqf"
@@ -147,7 +148,7 @@ local plugins = {
   -- TODO comment Hightlight
   {
     "folke/todo-comments.nvim",
-    event = "BufRead",
+    event = { "VeryLazy", "BufRead" },
     config = function()
       require "custom.configs.todo-comment"
     end,
