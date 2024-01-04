@@ -8,6 +8,8 @@ M.disabled = {
     ["<leader>h"] = "",
     ["<leader>v"] = "",
     ["<C-s>"] = "",
+    ["gi"] = "",
+    ["<ESC>"] = "",
   },
 }
 
@@ -20,7 +22,13 @@ M.general = {
     ["<A-k>"] = { "<cmd>m-2<cr>", " ", opts = { nowait = true } },
     ["<C-d>"] = { "<C-d>zz", "Move down with change focus", opts = { nowait = true } },
     ["<C-u>"] = { "<C-u>zz", "Move up with change focus", opts = { nowait = true } },
-    ["<leader>pp"] = { [["_dP]], "Delete and paste", opts = { nowait = true } },
+    ["<leader>p"] = { [["_dP]], "Delete and paste", opts = { nowait = true } },
+    ["gI"] = {
+      function()
+        vim.lsp.buf.implementation()
+      end,
+      "LSP implementation",
+    },
   },
   v = {
     ["<"] = { "<gv", "Indent Line" },

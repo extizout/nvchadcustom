@@ -175,7 +175,6 @@ local plugins = {
   -- Multi visual Cursor
   {
     "mg979/vim-visual-multi",
-    lazy = false,
   },
 
   {
@@ -191,6 +190,14 @@ local plugins = {
       require "custom.configs.barbecue"
     end,
   },
+
+  -- {
+  --   "nvim-lualine/lualine.nvim",
+  --   event = "BufRead",
+  --   config = function()
+  --     require "custom.configs.lualine"
+  --   end,
+  -- },
 }
 
 return plugins

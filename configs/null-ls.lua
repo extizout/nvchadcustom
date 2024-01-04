@@ -9,9 +9,13 @@ local code_action = null_ls.builtins.code_actions
 local sources = {
   formatting.prettierd.with {
     -- Filetypes for use prettier formatting.
-    filetypes = { "html", "json", "yaml", "markdown", "vue", "javascript" },
+    filetypes = { "html", "json", "yaml", "markdown", "vue", "javascript", "typescript", "jsonls" },
     -- Arg for formatting
-    extra_args = { "--no-semi", "--jsx-single-quote" },
+    -- extra_args = { "--no-semi", "--jsx-single-quote" },
+  },
+  formatting.prettier.with {
+    -- Filetypes for use prettier formatting.
+    filetypes = { "typescript" },
   },
   formatting.stylua,
 }

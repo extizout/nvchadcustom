@@ -7,10 +7,11 @@ M.ui = {
   theme = "chadracula",
   transparency = true,
   cmp = {
-    style = "default",
+    style = "flat_dark",
   },
   statusline = {
     theme = "default",
+    separator_style = "arrow",
   },
   tabufline = {
     enabled = false
