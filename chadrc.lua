@@ -5,7 +5,7 @@ local highlights = require "custom.highlights"
 
 M.ui = {
   theme = "chadracula",
-  transparency = true,
+  transparency = false,
   cmp = {
     style = "flat_dark",
   },

@@ -23,7 +23,8 @@ end
 M.lazygit = function()
   local Terminal = require("toggleterm.terminal").Terminal
   local lazygit = Terminal:new {
-    cmd = "lazygit --use-config-file=$HOME/.config/lazygit/config.yml",
+    -- cmd = "lazygit --use-config-file=$HOME/.config/lazygit/config.yml",
+    cmd = 'lazygit',
     direction = "float",
     hidden = true,
     count = 5,
