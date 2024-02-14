@@ -198,6 +198,17 @@ local plugins = {
   --     require "custom.configs.lualine"
   --   end,
   -- },
+  --
+
+  {
+    "github/copilot.vim",
+    event = "BufRead",
+    -- config = function()
+    --   require "custom.configs.copilot"
+    -- end
+  },
+
+
 }
 
 return plugins
