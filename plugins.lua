@@ -202,13 +202,42 @@ local plugins = {
 
   {
     "github/copilot.vim",
-    event = "BufRead",
-    -- config = function()
-    --   require "custom.configs.copilot"
-    -- end
+    event = "InsertEnter",
+    config = function()
+      -- Mapping tab is already used by NvChad
+      vim.g.copilot_no_tab_map = true;
+      vim.g.copilot_assume_mapped = true;
+      vim.g.copilot_tab_fallback = "";
+      -- The mapping is set to other key, see custom/lua/mappings
+      -- or run <leader>ch to see copilot mapping section
+      -- require "custom.configs.copilot"
+    end
   },
 
-
+  -- {
+  --   "zbirenbaum/copilot.lua",
+  --   cmd = "Copilot",
+  --   event = "InsertEnter",
+  --   config = function()
+  --     require "custom.configs.copilot"
+  --   end,
+  --   opts = overrides.copilot,
+  -- },
+  --
+  -- {
+  --   "hrsh7th/nvim-cmp",
+  --   dependencies = {
+  --     {
+  --       "zbirenbaum/copilot-cmp",
+  --       event = { "InsertEnter" },
+  --       config = function()
+  --         require("copilot_cmp").setup()
+  --       end,
+  --       opts = overrides.copilot_cmp,
+  --     },
+  --   },
+  --   opts = overrides.cmp,
+  -- },
 }
 
 return plugins

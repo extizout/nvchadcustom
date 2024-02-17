@@ -99,11 +99,16 @@ M.harpoon = {
     ["]h"] = { "<cmd> lua require('harpoon.ui').nav_next() <CR>", "Next Harpoon" },
     ["[h"] = { "<cmd> lua require('harpoon.ui').nav_prev() <CR>", "Prev Harpoon" },
     -- Linux
-    ["<leader>1"] = { "<cmd> lua require('harpoon.ui').nav_file(1) <CR>", "Harpoon 1" },
-    ["<leader>2"] = { "<cmd> lua require('harpoon.ui').nav_file(2) <CR>", "Harpoon 2" },
-    ["<leader>3"] = { "<cmd> lua require('harpoon.ui').nav_file(3) <CR>", "Harpoon 3" },
-    ["<leader>4"] = { "<cmd> lua require('harpoon.ui').nav_file(4) <CR>", "Harpoon 4" },
-    ["<leader>5"] = { "<cmd> lua require('harpoon.ui').nav_file(5) <CR>", "Harpoon 5" },
+    -- ["<leader>1"] = { "<cmd> lua require('harpoon.ui').nav_file(1) <CR>", "Harpoon 1" },
+    -- ["<leader>2"] = { "<cmd> lua require('harpoon.ui').nav_file(2) <CR>", "Harpoon 2" },
+    -- ["<leader>3"] = { "<cmd> lua require('harpoon.ui').nav_file(3) <CR>", "Harpoon 3" },
+    -- ["<leader>4"] = { "<cmd> lua require('harpoon.ui').nav_file(4) <CR>", "Harpoon 4" },
+    -- ["<leader>5"] = { "<cmd> lua require('harpoon.ui').nav_file(5) <CR>", "Harpoon 5" },
+    ["<M-1>"] = { "<cmd> lua require('harpoon.ui').nav_file(1) <CR>", "Harpoon 1" },
+    ["<M-2>"] = { "<cmd> lua require('harpoon.ui').nav_file(2) <CR>", "Harpoon 2" },
+    ["<M-3>"] = { "<cmd> lua require('harpoon.ui').nav_file(3) <CR>", "Harpoon 3" },
+    ["<M-4>"] = { "<cmd> lua require('harpoon.ui').nav_file(4) <CR>", "Harpoon 4" },
+    ["<M-5>"] = { "<cmd> lua require('harpoon.ui').nav_file(5) <CR>", "Harpoon 5" },
   },
 }
 
@@ -126,6 +131,17 @@ M.todo = {
   },
 }
 
+M.copilot = {
+  i = {
+    ["<C-l>"] = {
+      function()
+        vim.fn.feedkeys(vim.fn['copilot#Accept'](), '')
+      end,
+      "Copilot Accept",
+      { replace_keycodes = true, nowait = true, silent = true, expr = true, noremap = true }
+    }
+  }
+}
 -- more keybinds!
 
 function LAZYGIT_TOGGLE()
