@@ -142,6 +142,16 @@ M.copilot = {
     }
   }
 }
+
+M.dbee = {
+  n = {
+    ["<leader>db"] = { "<cmd>DBUIToggle<CR>", "OpenDB", opts = { nowait = true } },
+    ["<leader>de"] = { "<cmd>lua require('dbee').execute(query)<CR>", "Run Query", opts = { nowait = true } },
+    ["<leader>ds"] = { "<cmd>lua require('dbee').store(format, output, opts)<CR>", "Store The Current Result", opts = { nowait = true } },
+  },
+}
+
+
 -- more keybinds!
 
 function LAZYGIT_TOGGLE()
