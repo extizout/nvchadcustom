@@ -32,6 +32,13 @@ local plugins = {
       -- },
     },
   },
+  {
+    'stevearc/conform.nvim',
+    opts = {},
+    config = function()
+      require "custom.configs.conform"
+    end,
+  },
 
   -- Treesitter
   {

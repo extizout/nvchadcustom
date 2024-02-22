@@ -135,22 +135,37 @@ M.copilot = {
   i = {
     ["<C-l>"] = {
       function()
-        vim.fn.feedkeys(vim.fn['copilot#Accept'](), '')
+        vim.fn.feedkeys(vim.fn["copilot#Accept"](), "")
       end,
       "Copilot Accept",
-      { replace_keycodes = true, nowait = true, silent = true, expr = true, noremap = true }
-    }
-  }
+      { replace_keycodes = true, nowait = true, silent = true, expr = true, noremap = true },
+    },
+  },
 }
 
 M.dbee = {
   n = {
     ["<leader>db"] = { "<cmd>DBUIToggle<CR>", "OpenDB", opts = { nowait = true } },
     ["<leader>de"] = { "<cmd>lua require('dbee').execute(query)<CR>", "Run Query", opts = { nowait = true } },
-    ["<leader>ds"] = { "<cmd>lua require('dbee').store(format, output, opts)<CR>", "Store The Current Result", opts = { nowait = true } },
+    ["<leader>ds"] = {
+      "<cmd>lua require('dbee').store(format, output, opts)<CR>",
+      "Store The Current Result",
+      opts = { nowait = true },
+    },
   },
 }
 
+M.conform = {
+  n = {
+    ["<leader>fm"] = {
+      function()
+        -- vim.lsp.buf.format { async = true }
+        require("conform").format { async = true, lsp_fallback = true }
+      end,
+      "Conform Format",
+    },
+  },
+}
 
 -- more keybinds!
 
