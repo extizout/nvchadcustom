@@ -9,6 +9,9 @@ M.ui = {
   cmp = {
     style = "flat_dark",
   },
+  nvdash = {
+    enabled = true,
+  },
   statusline = {
     theme = "default",
     separator_style = "arrow",

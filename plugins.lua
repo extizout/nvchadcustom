@@ -24,12 +24,12 @@ local plugins = {
           require "custom.configs.mason-lspconfig"
         end,
       },
-      {
-        "jose-elias-alvarez/null-ls.nvim",
-        config = function()
-          require "custom.configs.null-ls"
-        end,
-      },
+      -- {
+      --   "jose-elias-alvarez/null-ls.nvim",
+      --   config = function()
+      --     require "custom.configs.null-ls"
+      --   end,
+      -- },
     },
   },
 

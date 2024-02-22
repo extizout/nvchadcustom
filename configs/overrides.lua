@@ -41,6 +41,8 @@ M.mason = {
     "html-lsp",
     "typescript-language-server",
     "prettierd",
+    "prettier",
+    "eslint",
     -- Prisma
     "prisma-language-server",
 
