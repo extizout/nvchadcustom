@@ -44,6 +44,12 @@ local plugins = {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = overrides.treesitter,
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter-context",
+        config = function()
+          require "custom.configs.treesitter-context"
+        end,
+    },
   },
 
   -- nvim-tree fs
@@ -184,19 +190,19 @@ local plugins = {
     "mg979/vim-visual-multi",
   },
 
-  {
-    "utilyre/barbecue.nvim",
-    event = "BufRead",
-    name = "barbecue",
-    version = "*",
-    dependencies = {
-      "SmiteshP/nvim-navic",
-    },
-    opts = {},
-    config = function()
-      require "custom.configs.barbecue"
-    end,
-  },
+  -- {
+  --   "utilyre/barbecue.nvim",
+  --   event = "BufRead",
+  --   name = "barbecue",
+  --   version = "*",
+  --   dependencies = {
+  --     "SmiteshP/nvim-navic",
+  --   },
+  --   opts = {},
+  --   config = function()
+  --     require "custom.configs.barbecue"
+  --   end,
+  -- },
 
   -- {
   --   "nvim-lualine/lualine.nvim",
