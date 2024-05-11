@@ -167,6 +167,25 @@ M.conform = {
   },
 }
 
+M.copilotChat = {
+  n = {
+    ["<leader>mc"] = {
+      function()
+        local chat = require "CopilotChat"
+        chat.toggle()
+      end,
+      "CopilotChat - Chat",
+    },
+    ["<leader>ms"] = {
+      function()
+        local chat = require "CopilotChat"
+        chat.reset()
+      end,
+      "CopilotChat - Reset",
+    },
+  },
+}
+
 -- more keybinds!
 
 function LAZYGIT_TOGGLE()

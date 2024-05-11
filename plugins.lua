@@ -33,7 +33,7 @@ local plugins = {
     },
   },
   {
-    'stevearc/conform.nvim',
+    "stevearc/conform.nvim",
     opts = {},
     config = function()
       require "custom.configs.conform"
@@ -46,9 +46,9 @@ local plugins = {
     opts = overrides.treesitter,
     dependencies = {
       "nvim-treesitter/nvim-treesitter-context",
-        config = function()
-          require "custom.configs.treesitter-context"
-        end,
+      config = function()
+        require "custom.configs.treesitter-context"
+      end,
     },
   },
 
@@ -218,13 +218,23 @@ local plugins = {
     event = "InsertEnter",
     config = function()
       -- Mapping tab is already used by NvChad
-      vim.g.copilot_no_tab_map = true;
-      vim.g.copilot_assume_mapped = true;
-      vim.g.copilot_tab_fallback = "";
+      vim.g.copilot_no_tab_map = true
+      vim.g.copilot_assume_mapped = true
+      vim.g.copilot_tab_fallback = ""
       -- The mapping is set to other key, see custom/lua/mappings
       -- or run <leader>ch to see copilot mapping section
       -- require "custom.configs.copilot"
-    end
+    end,
+  },
+  {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    version = "canary",
+    dependencies = {
+      { "github/copilot.vim" },
+    },
+    config = function()
+      require "custom.configs.copilot-chat"
+    end,
   },
 
   -- {
@@ -254,17 +264,17 @@ local plugins = {
 
   --DATABASE
   {
-    'kristijanhusak/vim-dadbod-ui',
+    "kristijanhusak/vim-dadbod-ui",
     opt = true,
     dependencies = {
-      { 'tpope/vim-dadbod' },
-      { 'kristijanhusak/vim-dadbod-completion' }
+      { "tpope/vim-dadbod" },
+      { "kristijanhusak/vim-dadbod-completion" },
     },
     cmd = {
-      'DBUI',
-      'DBUIToggle',
-      'DBUIAddConnection',
-      'DBUIFindBuffer',
+      "DBUI",
+      "DBUIToggle",
+      "DBUIAddConnection",
+      "DBUIFindBuffer",
     },
     init = function()
       -- Your DBUI configuration
@@ -273,7 +283,7 @@ local plugins = {
     config = function()
       require("custom.configs.dadbod").setup()
     end,
-  }
+  },
 
   -- {
   --   "kndndrj/nvim-dbee",
