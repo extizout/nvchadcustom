@@ -6,7 +6,7 @@ require("CopilotChat").setup {
   proxy = nil, -- [protocol://]host[:port] Use this proxy
   allow_insecure = false, -- Allow insecure server connections
 
-  system_prompt = prompts.COPILOT_INSTRUCTIONS, -- System prompt to use
+  -- system_prompt = prompts.COPILOT_INSTRUCTIONS, -- System prompt to use
   model = "gpt-4", -- GPT model to use, 'gpt-3.5-turbo' or 'gpt-4'
   temperature = 0.1, -- GPT temperature
 
