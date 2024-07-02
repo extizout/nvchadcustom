@@ -285,6 +285,15 @@ local plugins = {
     end,
   },
 
+  {
+    "m4xshen/hardtime.nvim",
+    event = { "BufRead" },
+    dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+    config = function()
+      require "custom.configs.hard-time"
+    end,
+  },
+
   -- {
   --   "kndndrj/nvim-dbee",
   --   dependencies = {
