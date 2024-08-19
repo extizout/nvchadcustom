@@ -4,7 +4,7 @@ local M = {}
 local highlights = require "custom.highlights"
 
 M.ui = {
-  theme = "rosepine",
+  theme = "bearded-arc",
   transparency = false,
   cmp = {
     style = "flat_dark",

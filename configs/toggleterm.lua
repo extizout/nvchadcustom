@@ -11,7 +11,7 @@ M.setup = function()
     -- Map for toggle terminal (previous opened terminal)
     open_mapping = [[<c-t>]],
     -- Default size of terminal
-    size = 5,
+    size = 10,
     direction = "horizontal",
     float_opts = {
       border = "curved",
