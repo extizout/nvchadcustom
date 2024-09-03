@@ -1,5 +1,7 @@
 local overrides = require "configs.overrides"
-return {
+
+---@type NvPluginSpec[]
+local plugins = {
   {
     "stevearc/conform.nvim",
     -- event = 'BufWritePre', -- uncomment for format on save
@@ -202,3 +204,5 @@ return {
     "mg979/vim-visual-multi",
   },
 }
+
+return plugins
