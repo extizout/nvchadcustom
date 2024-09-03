@@ -97,5 +97,16 @@ M.ui = {
     separator_style = "arrow",
   },
 }
+M.term = {
+  sizes = { sp = 0.3, vsp = 0.2 },
+  float = {
+    relative = "editor",
+    row = 0.3,
+    col = 0.25,
+    width = 0.5,
+    height = 0.4,
+    border = "single",
+  },
+}
 
 return M

@@ -9,7 +9,7 @@ local M = {}
 M.setup = function()
   require("toggleterm").setup {
     -- Map for toggle terminal (previous opened terminal)
-    open_mapping = [[<c-t>]],
+    open_mapping = [[<A-t>]],
     -- Default size of terminal
     size = 10,
     direction = "horizontal",

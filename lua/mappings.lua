@@ -26,6 +26,7 @@ map("v", ">", ">gv")
 
 -- Buffer
 map("n", "<leader>x", "<cmd> bdelete <cr>", { desc = "Close Buffer" })
+map("n", "<leader>ba", "<cmd> %bd|e#|bd#<CR><cr>", { desc = "Quit Other Buffer" })
 
 -- Telescope
 map("n", "<leader>ff", "<cmd> Telescope <cr>")
@@ -36,13 +37,20 @@ map("n", "<leader>?", "<cmd> Telescope oldfiles <CR>", { desc = "Resume" })
 map("n", "<leader>oo", "<cmd> Oil <CR>", { desc = "Oil" })
 
 -- Toggle Term
-map("n", "<leader>lg", function()
+-- LazyGit
+map({ "n", "t" }, "<leader>lg", function()
   toggleterm.lazygit()
 end, { desc = "LazyGit" })
 
-map("n", "<leader>ld", function()
+-- LazyDocker
+map({ "n", "t" }, "<leader>ld", function()
   toggleterm.lazydocker()
 end, { desc = "LazyDocker" })
+
+-- Terminal
+map({ "n", "t" }, "<C-t>", function()
+  require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm" }
+end, { desc = "Terminal" })
 
 -- Copilot
 map("i", "<C-l>", function()
@@ -110,3 +118,4 @@ nomap("n", "<C-k>")
 -- Disable nvterm
 nomap("n", "<leader>h")
 nomap("n", "<leader>v")
+nomap("n", "<leader>b")
