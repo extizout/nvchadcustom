@@ -1,46 +1,37 @@
--- TODO: vscode format i.e json files
-vim.g.vscode_snippets_path = ""
+vim.g.base46_cache = vim.fn.stdpath "data" .. "/nvchad/base46/"
+vim.g.mapleader = " "
 
--- TODO: snipmate format
-vim.g.snipmate_snippets_path = ""
+-- bootstrap lazy and all plugins
+local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
--- TODO: lua format
-vim.g.lua_snippets_path = vim.fn.stdpath "config" .. "/lua/custom/lua_snippets"
+if not vim.uv.fs_stat(lazypath) then
+  local repo = "https://github.com/folke/lazy.nvim.git"
+  vim.fn.system { "git", "clone", "--filter=blob:none", repo, "--branch=stable", lazypath }
+end
 
--- Cursor
-vim.o.cursorline = true
+vim.opt.rtp:prepend(lazypath)
 
--- Indent
-vim.o.breakindent = true
-vim.o.smartindent = true
+local lazy_config = require "configs.lazy"
 
--- Scoll
-vim.o.scrolloff = 9
+-- load plugins
+require("lazy").setup({
+  {
+    "NvChad/NvChad",
+    lazy = false,
+    branch = "v2.5",
+    import = "nvchad.plugins",
+  },
 
--- Number
-vim.o.nu = true
+  { import = "plugins" },
+}, lazy_config)
 
--- relative number line
-vim.o.relativenumber = true
+-- load theme
+dofile(vim.g.base46_cache .. "defaults")
+dofile(vim.g.base46_cache .. "statusline")
 
--- wrap
-vim.o.wrap = false
+require "options"
+require "nvchad.autocmds"
 
--- Fold
-vim.o.foldcolumn = "0" -- '0' is not bad
-vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
-vim.o.foldlevelstart = 99
-vim.o.foldenable = true
-vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:>]]
-
--- Highligh Searched Text
-vim.o.hlsearch = false
-vim.o.incsearch = true
-
--- TERM COLORs
-vim.o.termguicolors = true
-
--- Utils Functions
-
--- Highligh when yank
-require("custom.configs.utility").highlight_group()
+vim.schedule(function()
+  require "mappings"
+end)
