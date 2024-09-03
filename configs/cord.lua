@@ -7,9 +7,10 @@ require("cord").setup {
     reset_on_change = false, -- Reset start timestamp on presence change
   },
   editor = {
-    image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_8BTKl68xUkgPOBUdCKH85oYqI8Es0KNIUQ&s", -- Image ID or URL in case a custom client id is provided
+    -- image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_8BTKl68xUkgPOBUdCKH85oYqI8Es0KNIUQ&s", -- Image ID or URL in case a custom client id is provided
+    image = "https://img.buzzfeed.com/buzzfeed-static/static/2018-02/27/13/asset/buzzfeed-prod-fastlane-03/sub-buzz-13659-1519757265-7.jpg?downsize=700%3A%2A&output-quality=auto&output-format=auto", -- Image ID or URL in case a custom client id is provided
     client = "vim", -- vim, neovim, lunarvim, nvchad, astronvim or your application's client id
-    tooltip = "KUY", -- Text to display when hovering over the editor's image
+    tooltip = "KUY-RAI", -- Text to display when hovering over the editor's image
   },
   display = {
     show_time = true, -- Display start timestamp
