@@ -5,6 +5,8 @@ local g = vim.g
 
 o.cursorlineopt = "both" -- to enable cursorline!
 
+vim.lsp.set_log_level("off")
+
 -- TODO: vscode format i.e json files
 g.vscode_snippets_path = ""
 

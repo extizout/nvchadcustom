@@ -107,6 +107,9 @@ map("n", "]c", function()
   return "<Ignore>"
 end, { desc = "Next Hunk" })
 
+-- Cord
+map("n", "<C-;", "<cmd> CordToggleIdle <cr>", { desc = "Cord Idle" })
+
 -- multiple modes
 map({ "i", "n" }, "<C-k>", "<Up>", { desc = "Move up" })
 

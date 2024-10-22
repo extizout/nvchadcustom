@@ -29,9 +29,9 @@ local servers = {
   sqlls = {},
   docker_compose_language_service = {},
   dockerls = {},
-  tsserver = {},
+  ts_ls = { filetypes = { "javascript", "typescript", "typescriptreact" } },
   prismals = {},
-  htmx = {},
+  htmx = { filetypes = { "html" } },
   volar = {},
   lua_ls = {
     Lua = {

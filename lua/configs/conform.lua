@@ -4,8 +4,8 @@ local options = {
     css = { "prettier" },
     html = { "prettier" },
     go = { "gofmt", "goimports" },
-    javascript = { "prettierd" },
-    typescript = { "prettierd" },
+    javascript = { "prettier", stop_after_first = true },
+    typescript = { "prettier", stop_after_first = true },
     prisma = { "prisma-language-server" },
   },
 

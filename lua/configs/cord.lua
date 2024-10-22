@@ -8,17 +8,17 @@ require("cord").setup {
   },
   editor = {
     -- image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_8BTKl68xUkgPOBUdCKH85oYqI8Es0KNIUQ&s", -- Image ID or URL in case a custom client id is provided
-    image = "https://img.buzzfeed.com/buzzfeed-static/static/2018-02/27/13/asset/buzzfeed-prod-fastlane-03/sub-buzz-13659-1519757265-7.jpg?downsize=700%3A%2A&output-quality=auto&output-format=auto", -- Image ID or URL in case a custom client id is provided
-    client = "vim", -- vim, neovim, lunarvim, nvchad, astronvim or your application's client id
-    tooltip = "KUY-RAI", -- Text to display when hovering over the editor's image
+    image = "https://www.meme-arsenal.com/memes/bc49e17107d3f6321370f5693a96b695.jpg", -- Image ID or URL in case a custom client id is provided
+    client = "neovim", -- vim, neovim, lunarvim, nvchad, astronvim or your application's client id
+    tooltip = "Stealth Mode", -- Text to display when hovering over the editor's image
   },
   display = {
     show_time = true, -- Display start timestamp
     show_repository = true, -- Display 'View repository' button linked to repository url, if any
-    show_cursor_position = false, -- Display line and column number of cursor's position
+    show_cursor_position = true, -- Display line and column number of cursor's position
     swap_fields = false, -- If enabled, workspace is displayed first
     swap_icons = false, -- If enabled, editor is displayed on the main image
-    workspace_blacklist = {}, -- List of workspace names to hide
+    workspace_blacklist = { "Me" }, -- List of workspace names to hide
   },
   lsp = {
     show_problem_count = false, -- Display number of diagnostics problems
