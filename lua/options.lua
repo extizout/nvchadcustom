@@ -52,3 +52,4 @@ o.termguicolors = true
 
 -- Highligh when yank
 require("configs.utility").highlight_group()
+require("configs.utility").autoCmds()

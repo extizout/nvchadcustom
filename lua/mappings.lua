@@ -107,6 +107,9 @@ map("n", "]c", function()
   return "<Ignore>"
 end, { desc = "Next Hunk" })
 
+map("n", "rh", "<cmd>lua require('gitsigns').reset_hunk()<CR>", { desc = "Reset Hunk" })
+map("n", "ph", "<cmd>lua require('gitsigns').preview_hunk()<CR>", { desc = "Preview Hunk" })
+
 -- Cord
 map("n", "<C-;", "<cmd> CordToggleIdle <cr>", { desc = "Cord Idle" })
 
