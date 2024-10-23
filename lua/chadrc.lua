@@ -33,7 +33,7 @@ M.base46 = {
 }
 
 M.ui = {
-  transparency = false,
+  transparency = true,
   cmp = {
     style = "flat_dark",
   },

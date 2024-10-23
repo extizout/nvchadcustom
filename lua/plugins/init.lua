@@ -170,16 +170,16 @@ local plugins = {
 
   -- Copilot Chat
 
-  {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    version = "canary",
-    dependencies = {
-      { "github/copilot.vim" },
-    },
-    config = function()
-      require "configs.copilot-chat"
-    end,
-  },
+  -- {
+  --   "CopilotC-Nvim/CopilotChat.nvim",
+  --   version = "canary",
+  --   dependencies = {
+  --     { "github/copilot.vim" },
+  --   },
+  --   config = function()
+  --     require "configs.copilot-chat"
+  --   end,
+  -- },
 
   -- nvim - ufo for fold
   {
