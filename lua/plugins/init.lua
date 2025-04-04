@@ -2,237 +2,244 @@ local overrides = require "configs.overrides"
 
 ---@type NvPluginSpec[]
 local plugins = {
-  {
-    "stevearc/conform.nvim",
-    -- event = 'BufWritePre', -- uncomment for format on save
-    opts = require "configs.conform",
-  },
-
-  -- These are some examples, uncomment them if you want to see them work!
-  {
-    "neovim/nvim-lspconfig",
-    config = function()
-      require "configs.lspconfig"
-    end,
-    dependencies = {
-      {
-        "williamboman/mason.nvim",
-      },
-      {
-        "williamboman/mason-lspconfig.nvim",
-      },
+    {
+        "stevearc/conform.nvim",
+        -- event = 'BufWritePre', -- uncomment for format on save
+        opts = require "configs.conform",
     },
-  },
 
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = overrides.treesitter,
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter-context",
-      config = function()
-        require "configs.treesitter-context"
-      end,
-    },
-  },
-
-  -- GitSign
-  {
-    "lewis6991/gitsigns.nvim",
-    opts = overrides.gitsigns,
-  },
-
-  -- Oil netrw like
-  {
-    "stevearc/oil.nvim",
-    lazy = false,
-    -- opts = {},
-    config = function()
-      require "configs.oil"
-    end,
-  },
-
-  -- Nvim Tree
-  {
-    "nvim-tree/nvim-tree.lua",
-    opts = overrides.nvimtree,
-  },
-
-  -- Discord
-  {
-    "vyfor/cord.nvim",
-    build = "./build",
-    event = "VeryLazy",
-    opts = {},
-    config = function()
-      require "configs.cord"
-    end,
-  },
-
-  -- Toggle Term
-  {
-    "akinsho/toggleterm.nvim",
-    event = { "VeryLazy", "BufRead" },
-    version = "*",
-    config = function()
-      require("configs.toggleterm").setup()
-    end,
-  },
-
-  -- Better Quick Fix
-  {
-    "kevinhwang91/nvim-bqf",
-    event = { "VeryLazy", "BufRead" },
-    lazy = true,
-    config = function()
-      require "configs.nvim-bqf"
-    end,
-  },
-
-  -- TODO comment Hightlight
-  {
-    "folke/todo-comments.nvim",
-    event = { "VeryLazy", "BufRead" },
-    config = function()
-      require "configs.todo-comment"
-    end,
-  },
-
-  -- Nvim Surround ys{motion}
-  {
-    "kylechui/nvim-surround",
-    version = "*", -- Use for stability; omit to use `main` branch for the latest features
-    lazy = true,
-    event = "VeryLazy",
-    config = function()
-      require("nvim-surround").setup {}
-    end,
-  },
-
-  -- Harpoon
-  {
-    "ThePrimeagen/harpoon",
-    lazy = false,
-    config = function()
-      require "configs.harpoon"
-    end,
-  },
-
-  -- leap motion s{char}{char}
-  {
-    "ggandor/leap.nvim",
-    event = { "VeryLazy", "BufRead" },
-    config = function()
-      require "configs.leap"
-    end,
-  },
-
-  { "folke/neodev.nvim", opts = {} },
-
-  -- Go Lib
-  {
-    "ray-x/go.nvim",
-    dependencies = { -- optional packages
-      "ray-x/guihua.lua",
-    },
-    config = function()
-      require("go").setup()
-    end,
-    event = { "CmdlineEnter" },
-    ft = { "go", "gomod" },
-    build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
-  },
-
-  -- Hard Time - Force to use vim motion eff
-  {
-    "m4xshen/hardtime.nvim",
-    event = { "BufRead" },
-    dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-    config = function()
-      require "configs.hard-time"
-    end,
-  },
-
-  -- Copilot
-
-  {
-    "github/copilot.vim",
-    event = "InsertEnter",
-    config = function()
-      -- Mapping tab is already used by NvChad
-      vim.g.copilot_no_tab_map = true
-      vim.g.copilot_assume_mapped = true
-      vim.g.copilot_tab_fallback = ""
-      -- The mapping is set to other key, see custom/lua/mappings
-      -- or run <leader>ch to see copilot mapping section
-      -- require "custom.configs.copilot"
-    end,
-  },
-
-  -- Copilot Chat
-
-  -- {
-  --   "CopilotC-Nvim/CopilotChat.nvim",
-  --   version = "canary",
-  --   dependencies = {
-  --     { "github/copilot.vim" },
-  --   },
-  --   config = function()
-  --     require "configs.copilot-chat"
-  --   end,
-  -- },
-
-  -- nvim - ufo for fold
-  {
-    "kevinhwang91/nvim-ufo",
-    event = { "VeryLazy", "BufRead" },
-    dependencies = {
-      "kevinhwang91/promise-async",
-      {
-        "luukvbaal/statuscol.nvim",
+    -- These are some examples, uncomment them if you want to see them work!
+    {
+        "neovim/nvim-lspconfig",
         config = function()
-          require "configs.statuscol"
+            require "configs.lspconfig"
         end,
-      },
+        dependencies = {
+            {
+                "williamboman/mason.nvim",
+            },
+            {
+                "williamboman/mason-lspconfig.nvim",
+            },
+        },
     },
-    config = function()
-      require "configs.nvim-ufo"
-    end,
-  },
 
-  -- Multi visual Cursor
-  {
-    "mg979/vim-visual-multi",
-  },
-  {
-    "epwalsh/obsidian.nvim",
-    version = "*", -- recommended, use latest release instead of latest commit
-    lazy = true,
-    ft = "markdown",
-    -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
-    -- event = {
-    --   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
-    --   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/*.md"
-    --   -- refer to `:h file-pattern` for more examples
-    --   "BufReadPre path/to/my-vault/*.md",
-    --   "BufNewFile path/to/my-vault/*.md",
+    {
+        "nvim-treesitter/nvim-treesitter",
+        opts = overrides.treesitter,
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter-context",
+            config = function()
+                require "configs.treesitter-context"
+            end,
+        },
+    },
+
+    -- GitSign
+    {
+        "lewis6991/gitsigns.nvim",
+        opts = overrides.gitsigns,
+    },
+
+    -- Oil netrw like
+    {
+        "stevearc/oil.nvim",
+        lazy = false,
+        -- opts = {},
+        config = function()
+            require "configs.oil"
+        end,
+    },
+
+    -- Nvim Tree
+    {
+        "nvim-tree/nvim-tree.lua",
+        opts = overrides.nvimtree,
+    },
+
+    -- Discord
+    {
+        "vyfor/cord.nvim",
+        build = "./build",
+        event = "VeryLazy",
+        opts = {},
+        config = function()
+            require "configs.cord"
+        end,
+    },
+
+    -- Toggle Term
+    {
+        "akinsho/toggleterm.nvim",
+        event = { "VeryLazy", "BufRead" },
+        version = "*",
+        config = function()
+            require("configs.toggleterm").setup()
+        end,
+    },
+
+    -- Better Quick Fix
+    {
+        "kevinhwang91/nvim-bqf",
+        event = { "VeryLazy", "BufRead" },
+        lazy = true,
+        config = function()
+            require "configs.nvim-bqf"
+        end,
+    },
+
+    -- TODO comment Hightlight
+    {
+        "folke/todo-comments.nvim",
+        event = { "VeryLazy", "BufRead" },
+        config = function()
+            require "configs.todo-comment"
+        end,
+    },
+
+    -- Nvim Surround ys{motion}
+    {
+        "kylechui/nvim-surround",
+        version = "*", -- Use for stability; omit to use `main` branch for the latest features
+        lazy = true,
+        event = "VeryLazy",
+        config = function()
+            require("nvim-surround").setup {}
+        end,
+    },
+
+    -- Harpoon
+    {
+        "ThePrimeagen/harpoon",
+        lazy = false,
+        config = function()
+            require "configs.harpoon"
+        end,
+    },
+
+    -- leap motion s{char}{char}
+    {
+        "ggandor/leap.nvim",
+        event = { "VeryLazy", "BufRead" },
+        config = function()
+            require "configs.leap"
+        end,
+    },
+
+    { "folke/neodev.nvim", opts = {} },
+
+    -- Go Lib
+    {
+        "ray-x/go.nvim",
+        dependencies = { -- optional packages
+            "ray-x/guihua.lua",
+        },
+        config = function()
+            require("go").setup()
+        end,
+        event = { "CmdlineEnter" },
+        ft = { "go", "gomod" },
+        build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
+    },
+
+    -- Hard Time - Force to use vim motion eff
+    {
+        "m4xshen/hardtime.nvim",
+        event = { "BufRead" },
+        dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+        config = function()
+            require "configs.hard-time"
+        end,
+    },
+
+    -- Copilot
+
+    {
+        "github/copilot.vim",
+        event = "InsertEnter",
+        config = function()
+            -- Mapping tab is already used by NvChad
+            vim.g.copilot_no_tab_map = true
+            vim.g.copilot_assume_mapped = true
+            vim.g.copilot_tab_fallback = ""
+            -- The mapping is set to other key, see custom/lua/mappings
+            -- or run <leader>ch to see copilot mapping section
+            -- require "custom.configs.copilot"
+        end,
+    },
+
+    -- Copilot Chat
+
+    -- {
+    --   "CopilotC-Nvim/CopilotChat.nvim",
+    --   version = "canary",
+    --   dependencies = {
+    --     { "github/copilot.vim" },
+    --   },
+    --   config = function()
+    --     require "configs.copilot-chat"
+    --   end,
     -- },
-    dependencies = {
-      -- Required.
-      "nvim-lua/plenary.nvim",
-    },
-    opts = {
-      workspaces = {
-        {
-          name = "personal",
-          path = "~/Documents/Obsidian Vault/personal",
+
+    -- nvim - ufo for fold
+    {
+        "kevinhwang91/nvim-ufo",
+        event = { "VeryLazy", "BufRead" },
+        dependencies = {
+            "kevinhwang91/promise-async",
+            {
+                "luukvbaal/statuscol.nvim",
+                config = function()
+                    require "configs.statuscol"
+                end,
+            },
         },
-        {
-          name = "work",
-          path = "~/Documents/Obsidian Vault/work",
-        },
-      },
+        config = function()
+            require "configs.nvim-ufo"
+        end,
     },
-  }
+
+    -- Multi visual Cursor
+    {
+        "mg979/vim-visual-multi",
+    },
+    {
+        "epwalsh/obsidian.nvim",
+        version = "*", -- recommended, use latest release instead of latest commit
+        lazy = false,
+        ft = "markdown",
+        -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
+        -- event = {
+        --   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
+        --   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/*.md"
+        --   -- refer to `:h file-pattern` for more examples
+        --   "BufReadPre path/to/my-vault/*.md",
+        --   "BufNewFile path/to/my-vault/*.md",
+        -- },
+        dependencies = {
+            -- Required.
+            "nvim-lua/plenary.nvim",
+        },
+        opts = {
+            workspaces = {
+                {
+                    name = "personal",
+                    path = "/mnt/d/Vault/preedee.p/",
+                }
+            },
+        },
+    },
+    {
+        -- snippet plugin
+        "L3MON4D3/LuaSnip",
+        dependencies = "rafamadriz/friendly-snippets",
+        opts = { history = true, updateevents = "TextChanged,TextChangedI" },
+        config = function(_, opts)
+            require("luasnip").config.set_config(opts)
+            require "nvchad.configs.luasnip"
+            require("luasnip.loaders.from_vscode").lazy_load { paths = vim.g.vscode_snippets_path or "" }
+        end,
+    },
 }
 
 return plugins

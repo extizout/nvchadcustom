@@ -1,0 +1,13 @@
+{
+    "name": "apim",
+    "contributes": {
+        "snippets": [
+            {
+                "language": [
+                    "json"
+                ],
+                "path": "./apim.json"
+            }
+        ]
+    }
+}
