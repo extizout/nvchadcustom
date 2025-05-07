@@ -7,6 +7,8 @@ o.cursorlineopt = "both" -- to enable cursorline!
 
 vim.lsp.set_log_level("off")
 
+o.shell = 'fish'
+
 -- TODO: vscode format i.e json files
 g.vscode_snippets_path = ""
 

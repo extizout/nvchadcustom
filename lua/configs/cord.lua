@@ -7,18 +7,25 @@ require("cord").setup {
     reset_on_change = false, -- Reset start timestamp on presence change
   },
   editor = {
-    -- image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_8BTKl68xUkgPOBUdCKH85oYqI8Es0KNIUQ&s", -- Image ID or URL in case a custom client id is provided
-    image = "https://www.meme-arsenal.com/memes/bc49e17107d3f6321370f5693a96b695.jpg", -- Image ID or URL in case a custom client id is provided
+    -- icon = "",
     client = "neovim", -- vim, neovim, lunarvim, nvchad, astronvim or your application's client id
     tooltip = "Stealth Mode", -- Text to display when hovering over the editor's image
   },
   display = {
+    theme = "catppuccin",
+    flavor = "dark",
+    swap_fields = false, -- If enabled, workspace is displayed first
+    swap_icons = false, -- If enabled, editor is displayed on the main image
+
     show_time = true, -- Display start timestamp
     show_repository = true, -- Display 'View repository' button linked to repository url, if any
     show_cursor_position = true, -- Display line and column number of cursor's position
-    swap_fields = false, -- If enabled, workspace is displayed first
-    swap_icons = false, -- If enabled, editor is displayed on the main image
     workspace_blacklist = { "Me" }, -- List of workspace names to hide
+  },
+  timestamp = {
+    enabled = true,
+    reset_on_idle = false,
+    reset_on_change = false
   },
   lsp = {
     show_problem_count = false, -- Display number of diagnostics problems
@@ -27,29 +34,31 @@ require("cord").setup {
   },
   idle = {
     enable = true, -- Enable idle status
-    show_status = true, -- Display idle status, disable to hide the rich presence on idle
     timeout = 300000, -- Timeout in milliseconds after which the idle status is set, 0 to display immediately
+    show_status = true, -- Display idle status, disable to hide the rich presence on idle
     disable_on_focus = false, -- Do not display idle status when neovim is focused
-    text = "Idle", -- Text to display when idle
+    smart_idle = true,
+    details = "Idle", -- Text to display when idle
+    state = nil,
     tooltip = "💤", -- Text to display when hovering over the idle image
+    -- icon = ""
   },
   text = {
+    workspace = "In {}", -- Text to display when in a workspace (Empty string to disable)
     viewing = "Viewing {}", -- Text to display when viewing a readonly file
     editing = "Editing {}", -- Text to display when editing a file
     file_browser = "Browsing files in {}", -- Text to display when browsing files (Empty string to disable)
     plugin_manager = "Managing plugins in {}", -- Text to display when managing plugins (Empty string to disable)
-    lsp_manager = "Configuring LSP in {}", -- Text to display when managing LSP servers (Empty string to disable)
+    lsp = "Configuring LSP in {}", -- Text to display when managing LSP servers (Empty string to disable)
     vcs = "Committing changes in {}", -- Text to display when using Git or Git-related plugin (Empty string to disable)
-    workspace = "In {}", -- Text to display when in a workspace (Empty string to disable)
+    docs = "Reading {}",
+    notes = "Taking notes in {}",
+    terminal = "Running commands in {}"
   },
   buttons = {
-    {
-      label = "View Repository", -- Text displayed on the button
-      url = "git", -- URL where the button leads to ('git' = automatically fetch Git repository URL)
-    },
     -- {
-    --   label = 'View Plugin',
-    --   url = 'https://github.com/vyfor/cord.nvim',
+    --   label = "View Repository", -- Text displayed on the button
+    --   url = "git", -- URL where the button leads to ('git' = automatically fetch Git repository URL)
     -- }
   },
   assets = nil, -- Custom file icons, see the wiki*

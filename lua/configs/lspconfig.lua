@@ -15,7 +15,7 @@ local servers = {
   -- pyright = {},
   -- rust_analyzer = {},
   gopls = {},
-  golangci_lint_ls = {},
+  -- golangci_lint_ls = {},
   html = { filetypes = { "html", "twig", "hbs" } },
   cssls = {},
   tailwindcss = {},

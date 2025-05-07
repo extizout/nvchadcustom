@@ -60,7 +60,6 @@ local plugins = {
   -- Discord
   {
     "vyfor/cord.nvim",
-    build = "./build",
     event = "VeryLazy",
     opts = {},
     config = function()
@@ -232,7 +231,18 @@ local plugins = {
         },
       },
     },
-  }
+  },
+  {
+    "olimorris/codecompanion.nvim",
+    lazy = false,
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = function()
+      require "configs.codecompanion"
+    end,
+  },
 }
 
 return plugins

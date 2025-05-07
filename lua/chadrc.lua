@@ -5,7 +5,7 @@
 local M = {}
 
 M.base46 = {
-  transparency = true,
+  transparency = false,
   theme = "bearded-arc",
   integrations = {
     "blankline",
