@@ -172,7 +172,8 @@ require("codecompanion").setup({
   },
   display = {
     chat = {
-      show_settings = false,
+      show_settings = true,
+      separator = "-",
       window = {
         layout = "vertical", -- float|vertical|horizontal|buffer
       },

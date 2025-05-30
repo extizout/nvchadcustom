@@ -3,6 +3,17 @@ local overrides = require "configs.overrides"
 ---@type NvPluginSpec[]
 local plugins = {
   {
+    "nvim-telescope/telescope.nvim",
+    opts = {
+      defaults = {
+        file_ignore_patterns = {
+          "%.git/",
+          "node_modules",
+        },
+      },
+    },
+  },
+  {
     "stevearc/conform.nvim",
     -- event = 'BufWritePre', -- uncomment for format on save
     opts = require "configs.conform",
@@ -223,11 +234,11 @@ local plugins = {
       workspaces = {
         {
           name = "personal",
-          path = "~/Documents/Obsidian Vault/personal",
+          path = "~/Documents/Work/Poom's Work",
         },
         {
           name = "work",
-          path = "~/Documents/Obsidian Vault/work",
+          path = "~/Documents/Work/Poom's Work",
         },
       },
     },

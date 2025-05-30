@@ -116,6 +116,9 @@ map("n", "<C-;", "<cmd> CordToggleIdle <cr>", { desc = "Cord Idle" })
 -- multiple modes
 map({ "i", "n" }, "<C-k>", "<Up>", { desc = "Move up" })
 
+-- Code Companion
+map({ "i", "n" }, "<leader>lmt", "<cmd>:CodeCompanionChat Toggle<CR>", { desc = "Toggle LLM" })
+
 -- Disable mappings
 local nomap = vim.keymap.del
 
