@@ -1,13 +1,13 @@
 -- Load NvChad default LSP configurations
-require("nvchad.configs.lspconfig").defaults()
 local nvlsp = require "nvchad.configs.lspconfig"
-local lspconfig = require "lspconfig"
-
 nvlsp.defaults()
 
--- Setup Mason and Mason LSPConfig
+local lspconfig = require "lspconfig"
+local util = require "lspconfig.util"
+
+-- Mason
 require("mason").setup()
-require("mason-lspconfig").setup()
+local mason_lspconfig = require "mason-lspconfig"
 
 -- Define LSP servers and their specific settings
 local servers = {
@@ -18,11 +18,12 @@ local servers = {
   -- golangci_lint_ls = {},
   html = { filetypes = { "html", "twig", "hbs" } },
   cssls = {},
-  tailwindcss = {},
+  -- tailwindcss = {},
+  rust_analyzer = {},
   emmet_ls = {},
   jsonls = {},
   yamlls = {},
-  angularls = {},
+  -- angularls = {},
   bashls = {},
   cucumber_language_server = {},
   nginx_language_server = {},
@@ -31,13 +32,10 @@ local servers = {
   dockerls = {},
   ts_ls = { filetypes = { "javascript", "typescript", "typescriptreact" } },
   prismals = {},
-  htmx = { filetypes = { "html" } },
-  volar = {},
+  -- htmx = { filetypes = { "html" } },
   lua_ls = {
     Lua = {
-      diagnostics = {
-        globals = { "vim" },
-      },
+      diagnostics = { globals = { "vim" } },
       workspace = {
         library = {
           [vim.fn.expand "$VIMRUNTIME/lua"] = true,
@@ -72,35 +70,14 @@ mason_lspconfig.setup {
 -- Setup handlers for each LSP server
 mason_lspconfig.setup_handlers {
   function(server_name)
+    local cfg = servers[server_name] or {}
     lspconfig[server_name].setup {
-      capabilities = capabilities,
       on_attach = on_attach,
-      settings = servers[server_name],
-      filetypes = (servers[server_name] or {}).filetypes,
+      capabilities = capabilities,
+      settings = cfg,            -- for servers that use `settings`
+      filetypes = cfg.filetypes, -- pass through if you set them
+      root_dir = cfg.root_dir,   -- pass through if you set one
+      single_file_support = cfg.single_file_support,
     }
   end,
 }
-
--- Optionally, specify additional servers with default configs
-local additional_servers = {
-  "tailwindcss",
-  "htmx",
-  "fish_lsp",
-  "bashls",
-  "angularls",
-  "yamlls",
-}
-
-for _, lsp in ipairs(additional_servers) do
-  lspconfig[lsp].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-  }
-end
-
--- If needed, configure individual servers separately
--- Example: TSServer (TypeScript)
--- lspconfig.tsserver.setup {
---   on_attach = on_attach,
---   capabilities = capabilities,
--- }
