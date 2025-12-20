@@ -7,7 +7,7 @@ local util = require "lspconfig.util"
 
 -- Mason
 require("mason").setup()
-local mason_lspconfig = require "mason-lspconfig"
+-- local mason_lspconfig = require "mason-lspconfig"
 
 -- Define LSP servers and their specific settings
 local servers = {
@@ -60,24 +60,29 @@ capabilities.textDocument.foldingRange = {
   lineFoldingOnly = true,
 }
 
+for name, opts in pairs(servers) do
+  vim.lsp.config(name, opts)
+  vim.lsp.enable(name)
+end
+
 -- Ensure the servers are installed
-local mason_lspconfig = require "mason-lspconfig"
-
-mason_lspconfig.setup {
-  ensure_installed = vim.tbl_keys(servers),
-}
-
--- Setup handlers for each LSP server
-mason_lspconfig.setup_handlers {
-  function(server_name)
-    local cfg = servers[server_name] or {}
-    lspconfig[server_name].setup {
-      on_attach = on_attach,
-      capabilities = capabilities,
-      settings = cfg,            -- for servers that use `settings`
-      filetypes = cfg.filetypes, -- pass through if you set them
-      root_dir = cfg.root_dir,   -- pass through if you set one
-      single_file_support = cfg.single_file_support,
-    }
-  end,
-}
+-- local mason_lspconfig = require "mason-lspconfig"
+--
+-- mason_lspconfig.setup {
+--   ensure_installed = vim.tbl_keys(servers),
+-- }
+--
+-- -- Setup handlers for each LSP server
+-- mason_lspconfig.setup_handlers {
+--   function(server_name)
+--     local cfg = servers[server_name] or {}
+--     lspconfig[server_name].setup {
+--       on_attach = on_attach,
+--       capabilities = capabilities,
+--       settings = cfg,            -- for servers that use `settings`
+--       filetypes = cfg.filetypes, -- pass through if you set them
+--       root_dir = cfg.root_dir,   -- pass through if you set one
+--       single_file_support = cfg.single_file_support,
+--     }
+--   end,
+-- }
