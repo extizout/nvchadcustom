@@ -1,74 +1,112 @@
 require("cord").setup {
-  usercmds = true, -- Enable user commands
-  log_level = "error", -- One of 'trace', 'debug', 'info', 'warn', 'error', 'off'
-  timer = {
-    interval = 1500, -- Interval between presence updates in milliseconds (min 500)
-    reset_on_idle = false, -- Reset start timestamp on idle
-    reset_on_change = false, -- Reset start timestamp on presence change
-  },
+  enabled = true,
+  log_level = vim.log.levels.OFF,
   editor = {
-    -- icon = "",
-    client = "neovim", -- vim, neovim, lunarvim, nvchad, astronvim or your application's client id
-    tooltip = "Stealth Mode", -- Text to display when hovering over the editor's image
+    client = 'neovim',
+    tooltip = 'LGTM',
+    icon = nil,
   },
   display = {
-    theme = "catppuccin",
-    flavor = "dark",
-    swap_fields = false, -- If enabled, workspace is displayed first
-    swap_icons = false, -- If enabled, editor is displayed on the main image
-
-    show_time = true, -- Display start timestamp
-    show_repository = true, -- Display 'View repository' button linked to repository url, if any
-    show_cursor_position = true, -- Display line and column number of cursor's position
-    workspace_blacklist = { "Me" }, -- List of workspace names to hide
+    theme = 'catppuccin',
+    flavor = 'dark',
+    view = 'full',
+    swap_fields = false,
+    swap_icons = false,
   },
   timestamp = {
     enabled = true,
     reset_on_idle = false,
-    reset_on_change = false
-  },
-  lsp = {
-    show_problem_count = false, -- Display number of diagnostics problems
-    severity = 1, -- 1 = Error, 2 = Warning, 3 = Info, 4 = Hint
-    scope = "workspace", -- buffer or workspace
+    reset_on_change = false,
+    shared = false,
   },
   idle = {
-    enable = true, -- Enable idle status
-    timeout = 300000, -- Timeout in milliseconds after which the idle status is set, 0 to display immediately
-    show_status = true, -- Display idle status, disable to hide the rich presence on idle
-    disable_on_focus = false, -- Do not display idle status when neovim is focused
+    enabled = false,
+    timeout = 300000,
+    show_status = true,
+    ignore_focus = true,
+    unidle_on_focus = true,
     smart_idle = true,
-    details = "Idle", -- Text to display when idle
+    details = 'Idling',
     state = nil,
-    tooltip = "💤", -- Text to display when hovering over the idle image
-    -- icon = ""
+    tooltip = '💤',
+    icon = nil,
   },
   text = {
-    workspace = "In {}", -- Text to display when in a workspace (Empty string to disable)
-    viewing = "Viewing {}", -- Text to display when viewing a readonly file
-    editing = "Editing {}", -- Text to display when editing a file
-    file_browser = "Browsing files in {}", -- Text to display when browsing files (Empty string to disable)
-    plugin_manager = "Managing plugins in {}", -- Text to display when managing plugins (Empty string to disable)
-    lsp = "Configuring LSP in {}", -- Text to display when managing LSP servers (Empty string to disable)
-    vcs = "Committing changes in {}", -- Text to display when using Git or Git-related plugin (Empty string to disable)
-    docs = "Reading {}",
-    notes = "Taking notes in {}",
-    terminal = "Running commands in {}"
+    default = nil,
+    workspace = function(opts) return 'In ' .. opts.workspace end,
+    viewing = function() return 'Viewing ' end,
+    editing = function() return 'Editing ' end,
+    file_browser = function() return 'Browsing files' end,
+    plugin_manager = function(opts) return 'Managing plugins in ' .. opts.name end,
+    lsp = function(opts) return 'Configuring LSP in ' .. opts.name end,
+    docs = function(opts) return 'Reading ' .. opts.name end,
+    vcs = function(opts) return 'Committing changes in ' .. opts.name end,
+    notes = function(opts) return 'Taking notes in ' .. opts.name end,
+    debug = function(opts) return 'Debugging in ' .. opts.name end,
+    test = function(opts) return 'Testing in ' .. opts.name end,
+    diagnostics = function(opts) return 'Fixing problems in ' .. opts.name end,
+    games = function(opts) return 'Playing ' .. opts.name end,
+    terminal = function(opts) return 'Running commands in ' .. opts.name end,
+    dashboard = 'Home',
   },
-  buttons = {
-    -- {
-    --   label = "View Repository", -- Text displayed on the button
-    --   url = "git", -- URL where the button leads to ('git' = automatically fetch Git repository URL)
-    -- }
-  },
-  assets = nil, -- Custom file icons, see the wiki*
-  -- assets = {
-  --   lazy = {                                 -- Vim filetype or file name or file extension = table or string
-  --     name = 'Lazy',                         -- Optional override for the icon name, redundant for language types
-  --     icon = 'https://example.com/lazy.png', -- Rich Presence asset name or URL
-  --     tooltip = 'lazy.nvim',                 -- Text to display when hovering over the icon
-  --     type = 2,                              -- 0 = language, 1 = file browser, 2 = plugin manager, 3 = lsp manager, 4 = vcs; defaults to language
+  buttons = nil,
+  -- buttons = {
+  --   {
+  --     label = 'View Repository',
+  --     url = function(opts) return opts.repo_url end,
   --   },
-  --   ['Cargo.toml'] = 'crates',
   -- },
+  assets = nil,
+  variables = nil,
+  hooks = {
+    ready = nil,
+    shutdown = nil,
+    pre_activity = nil,
+    post_activity = nil,
+    idle_enter = nil,
+    idle_leave = nil,
+    workspace_change = nil,
+    buf_enter = nil,
+  },
+  extensions = nil,
+  advanced = {
+    plugin = {
+      autocmds = true,
+      cursor_update = 'on_hold',
+      match_in_mappings = true,
+      debounce = {
+        delay = 50,
+        interval = 750,
+      },
+    },
+    server = {
+      update = 'fetch',
+      pipe_path = nil,
+      executable_path = nil,
+      timeout = 300000,
+    },
+    discord = {
+      pipe_paths = nil,
+      reconnect = {
+        enabled = false,
+        interval = 5000,
+        initial = true,
+      },
+      sync = {
+        enabled = true,
+        mode = 'periodic',
+        interval = 12000,
+        reset_on_update = true,
+        pad = true,
+      },
+    },
+    workspace = {
+      root_markers = {
+        '.git',
+        '.hg',
+        '.svn',
+      },
+      limit_to_cwd = false,
+    },
+  },
 }

@@ -52,11 +52,6 @@ map({ "n", "t" }, "<C-t>", function()
   require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm" }
 end, { desc = "Terminal" })
 
--- Copilot
-map("i", "<C-l>", function()
-  vim.fn.feedkeys(vim.fn["copilot#Accept"](), "")
-end, { desc = "Copilot Accept" })
-
 -- Harpoon
 map("n", "<leader>ht", "<cmd> Telescope harpoon marks <CR>", { desc = "Harpoon Telescope Menu" })
 map("n", "<leader>hp", "<cmd> lua require('harpoon.ui').toggle_quick_menu() <CR>", { desc = "Harpoon Menu" })

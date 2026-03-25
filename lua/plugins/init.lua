@@ -164,19 +164,19 @@ local plugins = {
 
   -- Copilot
 
-  {
-    "github/copilot.vim",
-    event = "InsertEnter",
-    config = function()
-      -- Mapping tab is already used by NvChad
-      vim.g.copilot_no_tab_map = true
-      vim.g.copilot_assume_mapped = true
-      vim.g.copilot_tab_fallback = ""
-      -- The mapping is set to other key, see custom/lua/mappings
-      -- or run <leader>ch to see copilot mapping section
-      -- require "custom.configs.copilot"
-    end,
-  },
+  -- {
+  --   "github/copilot.vim",
+  --   event = "InsertEnter",
+  --   config = function()
+  --     -- Mapping tab is already used by NvChad
+  --     vim.g.copilot_no_tab_map = true
+  --     vim.g.copilot_assume_mapped = true
+  --     vim.g.copilot_tab_fallback = ""
+  --     -- The mapping is set to other key, see custom/lua/mappings
+  --     -- or run <leader>ch to see copilot mapping section
+  --     -- require "custom.configs.copilot"
+  --   end,
+  -- },
 
   -- Copilot Chat
 
@@ -254,6 +254,22 @@ local plugins = {
       require "configs.codecompanion"
     end,
   },
+  {
+    'ggml-org/llama.vim',
+    lazy = false,
+    init = function()
+      vim.g.llama_config = {
+        keymap_fim_trigger     = "<leader>llf",
+        keymap_fim_accept_full = "<C-l>",
+        keymap_fim_accept_line = "<S-Tab>",
+        keymap_fim_accept_word = "<leader>ll]",
+      }
+    end,
+    config = function()
+      require "configs.llama"
+    end
+
+  }
 }
 
 return plugins
