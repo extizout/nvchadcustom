@@ -269,45 +269,7 @@ local plugins = {
       require "configs.llama"
     end
 
-  },
-  {
-    "yetone/avante.nvim",
-    lazy = false,
-    version = false,
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-      "nvim-treesitter/nvim-treesitter",
-      "nvim-tree/nvim-web-devicons",
-      "zbirenbaum/copilot.lua",
-      {
-        "HakonHarnes/img-clip.nvim",
-        event = "VeryLazy",
-        opts = {
-          default = {
-            embed_image_as_base64 = false,
-            prompt_for_file_name = false,
-          },
-        },
-      },
-    },
-    build = "make",
-    config = function()
-      require "configs.avante"
-    end,
-  },
-  {
-    "ravitemer/mcphub.nvim",
-    event = "VeryLazy",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-      "MunifTanjim/nui.nvim",
-    },
-    config = function()
-      require "configs.mcphub"
-    end,
-  },
+  }
 }
 
 return plugins
