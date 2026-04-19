@@ -254,22 +254,22 @@ local plugins = {
       require "configs.codecompanion"
     end,
   },
-  {
-    'ggml-org/llama.vim',
-    lazy = false,
-    init = function()
-      vim.g.llama_config = {
-        keymap_fim_trigger     = "<leader>llf",
-        keymap_fim_accept_full = "<C-l>",
-        keymap_fim_accept_line = "<S-Tab>",
-        keymap_fim_accept_word = "<leader>ll]",
-      }
-    end,
-    config = function()
-      require "configs.llama"
-    end
-
-  }
+  -- {
+  --   'ggml-org/llama.vim',
+  --   lazy = false,
+  --   init = function()
+  --     vim.g.llama_config = {
+  --       keymap_fim_trigger     = "<leader>llf",
+  --       keymap_fim_accept_full = "<C-l>",
+  --       keymap_fim_accept_line = "<S-Tab>",
+  --       keymap_fim_accept_word = "<leader>ll]",
+  --     }
+  --   end,
+  --   config = function()
+  --     require "configs.llama"
+  --   end
+  --
+  -- }
 }
 
 return plugins
