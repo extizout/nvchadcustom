@@ -129,7 +129,7 @@ local plugins = {
 
   -- leap motion s{char}{char}
   {
-    "ggandor/leap.nvim",
+    url = "https://codeberg.org/andyg/leap.nvim",
     event = { "VeryLazy", "BufRead" },
     config = function()
       require "configs.leap"
