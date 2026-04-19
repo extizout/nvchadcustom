@@ -1,4 +1,5 @@
 local overrides = require "configs.overrides"
+local avante = require "configs.avante"
 
 ---@type NvPluginSpec[]
 local plugins = {
@@ -254,6 +255,18 @@ local plugins = {
       require "configs.codecompanion"
     end,
   },
+  {
+    "yetone/avante.nvim",
+    -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+    -- ⚠️ must add this setting! ! !
+    build = vim.fn.has("win32") ~= 0
+        and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
+        or "make",
+    event = "VeryLazy",
+    version = false, -- Never set this value to "*"! Never!
+    opts = avante,
+    dependencies = avante.dependencies,
+  }
   -- {
   --   'ggml-org/llama.vim',
   --   lazy = false,
