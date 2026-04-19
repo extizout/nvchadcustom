@@ -103,20 +103,25 @@ Identify any issues related to:
 
 require("codecompanion").setup({
   adapters = {
-    copilot = function()
-      return require("codecompanion.adapters").extend("copilot", {
-        schema = {
-          model = {
-            default = "gpt-4.1",
+    acp = {
+      codex = function()
+        return require("codecompanion.adapters").extend("codex", {
+          defaults = {
+            auth_method = "chatgpt",
+            session_config_options = {
+              model = "gpt-5.4-mini",
+              mode = "Full Access",
+              thought_level = "Xlow",
+            },
           },
-        },
-      })
-    end,
+        })
+      end,
+    }
   },
   strategies = {
     chat = {
-      adapter = "copilot",
-      roles = { llm = "  Copilot Chat", user = "Poom" },
+      adapter = "codex",
+      roles = { llm = "Chat", user = "Poom" },
       slash_commands = {
         ["buffer"] = {
           callback = "strategies.chat.slash_commands.buffer",
