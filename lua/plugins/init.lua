@@ -26,14 +26,18 @@ local plugins = {
     config = function()
       require "configs.lspconfig"
     end,
-    dependencies = {
-      {
-        "williamboman/mason.nvim",
-      },
-      -- {
-      --   "williamboman/mason-lspconfig.nvim",
-      -- },
-    },
+    dependencies = {},
+  },
+  {
+    "seblyng/roslyn.nvim",
+    event = { "VeryLazy", "BufRead" },
+    opts = {},
+  },
+  {
+    "williamboman/mason.nvim",
+    config = function()
+      require("configs.mason").setup()
+    end,
   },
 
   {
@@ -248,14 +252,13 @@ local plugins = {
     "yetone/avante.nvim",
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     -- ⚠️ must add this setting! ! !
-    build = vim.fn.has("win32") ~= 0
-        and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
-        or "make",
+    build = vim.fn.has "win32" ~= 0 and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
+      or "make",
     event = "VeryLazy",
     version = false, -- Never set this value to "*"! Never!
     opts = avante,
     dependencies = avante.dependencies,
-  }
+  },
   -- {
   --   'ggml-org/llama.vim',
   --   lazy = false,

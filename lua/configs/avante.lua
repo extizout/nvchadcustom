@@ -1,6 +1,6 @@
 local M = {}
 
-M.instructions_file = "avante.md"
+M.instructions_file = "agent.md"
 M.provider = "codex"
 
 M.providers = {
